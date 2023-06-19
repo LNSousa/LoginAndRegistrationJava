@@ -29,7 +29,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/welcome")
-	public String welcome() {
+	public String welcome(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return "redirect:/";
+		}
 		return "welcome.jsp";
 	}
 	
